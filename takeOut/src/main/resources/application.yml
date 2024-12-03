@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: ${spring.application.name}
+  datasource:
+    url: ${spring.datasource.url}
+    username: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    driver-class-name: ${spring.datasource.driver-class-name}
+  # redis
+  data:
+    redis:
+      host: ${spring.data.redis.host}
+      port: ${spring.data.redis.port}
+      password: ${spring.data.redis.password}
+# mybatis
+mybatis:
+  mapper-locations: ${mybatis.mapper-locations}
+  type-aliases-package: ${mybatis.type-aliases-package}
+  configuration:
+    log-impl: ${mybatis.configuration.log-impl} # 开启sql日志
+    map-underscore-to-camel-case: ${mybatis.configuration.map-underscore-to-camel-case} # 开启驼峰命名和下划线命名的自动转换
+
+
+sky:
+  # jwt 配置
+  jwt:
+    # 管理端
+    admin-secret-key: ${sky.jwt.admin-secret-key}
+    admin-token-name: ${sky.jwt.admin-token-name}
+    admin-ttl: ${sky.jwt.admin-ttl} # 100天
+    # 用户端
+    user-secret-key: ${sky.jwt.user-secret-key}
+    user-token-name: ${sky.jwt.user-token-name}
+    user-ttl: ${sky.jwt.user-ttl}
+  # 阿里云oss
+  alioss:
+    access-key-id: ${sky.alioss.access-key-id}
+    access-key-secret: ${sky.alioss.access-key-secret}
+    bucket-name: ${sky.alioss.bucket-name}
+    endpoint: ${sky.alioss.endpoint}
+  # 微信小程序
+  wechat:
+    app-id: ${sky.wechat.app-id}
+    secret: ${sky.wechat.secret}
+
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.li.mapper.DishMapper">
+<!--    <select id="getDishById" resultType="com.li.pojo.vo.DishVO">-->
+<!--        select d.category_id as category_id, d.id, d.name,-->
+<!--               c.name as category_name, d.description, d.image,-->
+<!--               d.price, d.status, d.update_time from dish d, category c-->
+<!--        <where>-->
+<!--             d.category_id = c.id-->
+<!--            <if test="id != null">and d.id = #{id}</if>-->
+<!--            <if test="categoryId != null">and d.category_id = #{categoryId}</if>-->
+<!--        </where>-->
+<!--    </select>-->
+<!--    <select id="getFlavorById" resultType="com.li.pojo.entity.DishFlavor">-->
+<!--        select df.id, df.name, df.value, df.dish_id from dish_flavor df, dish d-->
+<!--        <where>-->
+<!--            df.dish_id = d.id-->
+<!--            <if test="id != null">and d.id = #{id}</if>-->
+<!--            <if test="categoryId != null">and d.category_id = #{categoryId}</if>-->
+<!--        </where>-->
+<!--    </select>-->
+<!--    // 分页查询-->
+    <select id="page" resultType="com.li.pojo.vo.DishVO">
+        select * from dish <where>
+        <if test="name != null">and name like concat('%',#{name},'%')</if>
+        <if test="categoryId != null">and category_id = #{categoryId}</if>
+        <if test="status != null">and status = #{status}</if>
+        </where>
+    </select>
+
+<!--修改菜品数据-->
+    <update id="updateDish">
+        update dish <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="categoryId != null">category_id = #{categoryId},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="image != null">image = #{image},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="updateUser != null">update_user = #{updateUser},</if>
+        </set> where id = #{id}
+    </update>
+
+<!--新增一道菜，将数据插入到dish表，同时返回主键id-->
+    <insert id="save" parameterType="com.li.pojo.entity.Dish" useGeneratedKeys="true" keyProperty="id">
+        insert into dish(name, category_id, price, image, description, status, create_time, update_time, create_user, update_user)
+        values (#{name}, #{categoryId}, #{price}, #{image}, #{description}, #{status}, #{createTime}, #{updateTime}, #{createUser}, #{updateUser})
+    </insert>
+
+<!--&lt;!&ndash;新增一道菜的口味&ndash;&gt;-->
+<!--    <insert id="saveFlavor">-->
+<!--        insert into dish_flavor (name, value, dish_id) values (#{name}, #{value}, #{dishId})-->
+<!--    </insert>-->
+</mapper>
