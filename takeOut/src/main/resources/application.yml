@@ -1,3 +1,4 @@
+
 spring:
   profiles:
     active: dev
@@ -44,5 +45,6 @@ sky:
   wechat:
     app-id: ${sky.wechat.app-id}
     secret: ${sky.wechat.secret}
-
+server:
+  port: 8080
 

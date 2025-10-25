@@ -68,8 +68,8 @@ public class EmployeeServiceImpl implements EmployeeService {
             // 用户名重复和长度校验
             throw new UsernameAlreadyExistsException(MessageConstant.USERNAME_ALREADY_EXISTS);
         }
-        if (employeeDTO.getUsername().length() > 3 &&
-                employeeDTO.getUsername().length() < 10) {
+        if (employeeDTO.getUsername().length() < 4 ||
+                employeeDTO.getUsername().length() > 9) {
             throw new BaseException(MessageConstant.USERNAME_REGEX_ERROR);
         }
         // 手机号码校验
