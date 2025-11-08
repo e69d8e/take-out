@@ -18,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 public class DishVO implements Serializable {
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING) // 避免Long精度丢失
     private Long id;
     //菜品名称
     private String name;

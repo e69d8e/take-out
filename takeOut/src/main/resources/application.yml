@@ -1,5 +1,7 @@
-
 spring:
+#  jackson: # 解决Long类型精度丢失的问题
+#    generator:
+#      write-numbers-as-strings: true
   profiles:
     active: dev
   application:

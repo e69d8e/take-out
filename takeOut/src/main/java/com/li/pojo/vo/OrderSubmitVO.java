@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class OrderSubmitVO implements Serializable {
     //订单id
+    @JsonFormat(shape = JsonFormat.Shape.STRING) // 避免Long精度丢失
     private Long id;
     //订单号
     private String orderNumber;

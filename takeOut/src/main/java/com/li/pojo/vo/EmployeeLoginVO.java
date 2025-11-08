@@ -1,5 +1,6 @@
 package com.li.pojo.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,7 @@ import java.io.Serializable;
 public class EmployeeLoginVO implements Serializable {
 
     @ApiModelProperty("主键值")
+    @JsonFormat(shape = JsonFormat.Shape.STRING) // 避免Long精度丢失
     private Long id;
 
     @ApiModelProperty("用户名")
